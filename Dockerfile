@@ -1,7 +1,7 @@
 FROM node:20 AS assets
 WORKDIR /app
 COPY . .
-RUN npm ci && npm run build
+RUN npm ci --legacy-peer-deps && npm run build
 
 FROM php:8.3-apache
 RUN apt-get update && apt-get install -y libpq-dev libzip-dev unzip git \
